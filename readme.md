@@ -1,5 +1,13 @@
 # SimSimi
 
+## how to run
+
+``` 
+yarn
+yarn dev
+```
+
+> BASE_URL : ```http://localhost:1234```
 ## Schema
 
 ### SimSimi
@@ -30,6 +38,7 @@
 
 ## API 명세
 
+> localhost
 ### post /simsimi
 
 - body
