@@ -7,6 +7,7 @@ export const makeSimSimi = async (req: Request, res : Response ) => {
     try {
         const simsimi = new simsimiModel(req.body);
         await simsimi.save({ validateBeforeSave : false });
+        console.log("response.data.id :", simsimi.id);
         return res.status(201).json(
             {
                 message : `make SimSimi success`,
@@ -22,9 +23,9 @@ export const makeSimSimi = async (req: Request, res : Response ) => {
 };
 
 export const getTalkSets = async (req : Request, res: Response) => {
-    console.log(`getTalkSets with request : ${req.body}`);
+    console.log(`getTalkSets with request : ${JSON.stringify(req.params.id)}`);
     try { 
-        const simsimi_id = req.body.id as string;
+        const simsimi_id = req.params.id as string;
         const simsimi = await simsimiModel.findById(simsimi_id);
         if(!simsimi) {
             return res.status(400).json({
