@@ -1,8 +1,11 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
+export interface TalkSet {
+    question : string;
+    answer : string;
+}
 export type SimSimi = {
-    questions : string[];
-    answers : string[];
+    talkSets : TalkSet[];
     name : string;
 }
 
@@ -12,14 +15,13 @@ export const simsimiSchema = new Schema(
             type: String,
             required: [true, 'SimSimi name is required!'],
         },
-        questions : {
-            type: [String],
-            required: [true, 'SimSimi question is required!'],
-        },
-        answers : {
-            type: [String],
-            required: [true, 'SimSimi answers is required!'],
-        },
+        talkSets : {
+            type : [{
+                question : String,
+                answer : String
+            }],
+            required : [true, 'SimSimi talkSets are required!']
+    }
     },
     {timestamps: true}
 )
